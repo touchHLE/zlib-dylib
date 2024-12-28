@@ -6,7 +6,7 @@ set(CMAKE_SHARED_LIBRARY_C_FLAGS "")
 
 set(CMAKE_C_COMPILER clang)
 
-set(SDK_PATH ${CMAKE_SOURCE_DIR}/iPhoneOS3.0-custom.sdk)
+set(SDK_PATH ${CMAKE_SOURCE_DIR}/common-3.0.sdk)
 
 set(CMAKE_LINKER ${SDK_PATH}/usr/bin/ld)
 set(LIPO ${SDK_PATH}/usr/bin/lipo)
@@ -37,6 +37,7 @@ set(CFLAGS_COMMON
     -pipe
     -std=gnu99
     -Wno-deprecated-non-prototype
+    -Wno-incompatible-sysroot
     -fno-stack-protector
     -DUSE_MMAP
     -DNDEBUG

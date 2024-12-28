@@ -17,16 +17,16 @@ jobs:
 
     env:
       SDK_VERSION: "0.1.0"
-      SDK_REPO: "acieslewicz/oss-iphoneos-sdk"
+      SDK_REPO: "acieslewicz/common-3.0-sdk"
       
     steps:
     - uses: actions/checkout@v4
 
     - name: Download SDK
       run: |
-        curl -L -o sdk.tar.gz "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/iPhoneOS3.0-custom.sdk.tar.gz"
+        curl -L -o sdk.tar.gz "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/common-3.0.sdk.tar.gz"
         tar xzf sdk.tar.gz
-        chmod -R +x iPhoneOS3.0-custom.sdk/usr/bin/
+        chmod -R +x common-3.0.sdk/usr/bin/
       
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build
