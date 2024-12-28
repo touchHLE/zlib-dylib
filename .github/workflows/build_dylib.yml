@@ -26,6 +26,7 @@ jobs:
       run: |
         curl -L -o sdk.tar.gz "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/iPhoneOS3.0-custom.sdk.tar.gz"
         tar xzf sdk.tar.gz
+        chmod -R +x iPhoneOS3.0-custom.sdk/usr/bin/
       
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build
