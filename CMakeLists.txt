@@ -1,14 +1,15 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
 set(CMAKE_LINK_DEPENDS_NO_SHARED TRUE)
 set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
 set(CMAKE_SHARED_LIBRARY_C_FLAGS "")
 
 set(CMAKE_C_COMPILER clang)
-set(CMAKE_LINKER /home/acieslewicz/cctools/bin/arm-apple-darwin10-ld)
-set(LIPO /usr/lib/llvm-18/bin/llvm-lipo)
 
-set(SDK_PATH /home/acieslewicz/theos/sdks/iPhoneOS3.0.sdk)
+set(SDK_PATH ${CMAKE_SOURCE_DIR}/iPhoneOS3.0-custom.sdk)
+
+set(CMAKE_LINKER ${SDK_PATH}/usr/bin/ld)
+set(LIPO ${SDK_PATH}/usr/bin/lipo)
 
 set(CMAKE_C_CREATE_SHARED_LIBRARY "<CMAKE_LINKER> <LINK_FLAGS> -o <TARGET> <OBJECTS>") # Force CMake to use custom linker
 
