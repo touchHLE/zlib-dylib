@@ -47,8 +47,8 @@ set(CFLAGS_COMMON
 set(LDFLAGS_COMMON
     ${SDK_PATH}/usr/lib/dylib1.o
     -L${SDK_PATH}/usr/lib
-    -lazy-lSystem.B
-    -lazy-lgcc_s.1
+    -lSystem.B
+    -lgcc_s.1
     -exported_symbols_list ${zlib_SOURCE_DIR}/libz.exp
     -install_name ${INSTALL_PATH}/${LIB_NAME}
     -dead_strip
