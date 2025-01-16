@@ -10,6 +10,7 @@ set(CMAKE_LINKER ${SDK_PATH}/usr/bin/ld)
 set(LIPO ${SDK_PATH}/usr/bin/lipo)
 
 set(CMAKE_OSX_SYSROOT ${SDK_PATH}) # Does not seem to work
+set(CMAKE_OSX_ARCHITECTURES armv6 armv7)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 3.0)
 set(CMAKE_C_COMPILER_TARGET arm-apple-ios3.0)
 
