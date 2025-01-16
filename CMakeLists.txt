@@ -9,8 +9,7 @@ set(SDK_PATH ${CMAKE_SOURCE_DIR}/common-3.0.sdk)
 set(CMAKE_LINKER ${SDK_PATH}/usr/bin/ld)
 set(LIPO ${SDK_PATH}/usr/bin/lipo)
 
-set(CMAKE_OSX_SYSROOT ${SDK_PATH})
-set(TARGET_ARCHITECTURES armv6 armv7)
+set(CMAKE_OSX_SYSROOT ${SDK_PATH}) # Does not seem to work
 set(CMAKE_OSX_DEPLOYMENT_TARGET 3.0)
 set(CMAKE_C_COMPILER_TARGET arm-apple-ios3.0)
 
@@ -55,9 +54,13 @@ set(ZLIB_SOURCES
     ${zlib_SOURCE_DIR}/zlib/zutil.c)
 
 add_compile_options(
-  -Wno-deprecated-non-prototype -Wno-incompatible-sysroot
-  -Wno-expansion-to-defined -fno-stack-protector # Workardound for missing
-                                                 # __stack_chk_*
+  -Wno-deprecated-non-prototype
+  -Wno-incompatible-sysroot
+  -Wno-expansion-to-defined
+  -fno-stack-protector
+  -isysroot
+  ${SDK_PATH} # Workardound for missing
+  # __stack_chk_*
 )
 
 add_compile_definitions(USE_MMAP NDEBUG)
@@ -88,7 +91,7 @@ add_link_options(
 
 set(arch_targets "")
 # Create a target for each architecture
-foreach(ARCH IN LISTS TARGET_ARCHITECTURES)
+foreach(ARCH IN LISTS CMAKE_OSX_ARCHITECTURES)
   set(target_name libz_${ARCH})
   list(APPEND arch_targets ${target_name})
   add_library(${target_name} SHARED ${ZLIB_SOURCES})
@@ -111,7 +114,7 @@ foreach(ARCH IN LISTS TARGET_ARCHITECTURES)
 endforeach()
 
 set(lipo_inputs "")
-foreach(ARCH IN LISTS TARGET_ARCHITECTURES)
+foreach(ARCH IN LISTS CMAKE_OSX_ARCHITECTURES)
   list(APPEND lipo_inputs "${CMAKE_BINARY_DIR}/${LIB_NAME}.${ARCH}")
 endforeach()
 
