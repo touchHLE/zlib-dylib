@@ -17,7 +17,7 @@ jobs:
 
     env:
       SDK_VERSION: "0.1.1"
-      SDK_REPO: "acieslewicz/common-3.0-sdk"
+      SDK_REPO: "touchHLE/common-3.0-sdk"
       
     steps:
     - uses: actions/checkout@v4
