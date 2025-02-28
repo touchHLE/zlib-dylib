@@ -33,12 +33,11 @@ set(INSTALL_PATH /usr/lib)
 set(VERSION 1.2.3)
 set(COMPAT_VERSION 1.0.0)
 
-include(FetchContent)
-FetchContent_Declare(
-  zlib
-  GIT_REPOSITORY https://github.com/apple-oss-distributions/zlib
-  GIT_TAG zlib-23.0.1)
-FetchContent_MakeAvailable(zlib)
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/zlib-src")
+  message(FATAL_ERROR "zlib source is missing! Run 'git submodule update --init' to sync")
+endif()
+
+set(zlib_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib-src")
 
 set(ZLIB_SOURCES
     ${zlib_SOURCE_DIR}/zlib/adler32.c
