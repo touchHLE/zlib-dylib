@@ -110,7 +110,7 @@ foreach(ARCH IN LISTS CMAKE_OSX_ARCHITECTURES)
 
   target_compile_options(${target_name} PRIVATE -arch ${ARCH})
 
-  target_link_options(${target_name} PRIVATE -arch ${ARCH})
+  target_link_options(${target_name} PRIVATE -arch ${ARCH} -dylib)
 endforeach()
 
 set(lipo_inputs "")
