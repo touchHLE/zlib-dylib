@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.20)
 
 # TODO: Can this be replaced with a toolchain file?
 set(CMAKE_LINK_DEPENDS_NO_SHARED TRUE)
-
+# Workaround for getting the build to work on Windows
+# This should be replaced with a iOS system at some point, 
+# but there is still much left to do for that to happen. 
+set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_C_COMPILER clang)
 
 set(SDK_PATH ${CMAKE_SOURCE_DIR}/common-3.0.sdk)
