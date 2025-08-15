@@ -16,34 +16,34 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SDK_VERSION: "0.1.1"
+      SDK_VERSION: "0.2.1"
       SDK_REPO: "touchHLE/common-3.0-sdk"
       
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         submodules: 'true'
 
     - name: Download SDK
       run: |
-        curl -L -o sdk.tar.gz "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/common-3.0.sdk.tar.gz"
+        curl -L -o sdk.tar.gz "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/common-3.0.sdk-linux-x86_64.tar.gz"
         tar xzf sdk.tar.gz
         chmod -R +x common-3.0.sdk/usr/bin/
       
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build
+      run: cmake -DCMAKE_TOOLCHAIN_FILE="common-3.0.sdk/cmake/Toolchain/common-3.0.cmake" -B build
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build
     
     - uses: actions/upload-artifact@v4
       with:
-        name: libz.1.dylib
-        path: build/libz.1.dylib
+        name: libz.1.2.3.dylib
+        path: build/libz.1.2.3.dylib
 
     - name: Create Release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: build/libz.1.dylib
+        files: build/libz.1.2.3.dylib
 
