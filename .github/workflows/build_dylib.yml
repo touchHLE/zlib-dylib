@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SDK_VERSION: "0.2.1"
+      SDK_VERSION: "0.2.2"
       SDK_REPO: "touchHLE/common-3.0-sdk"
       
     steps:
