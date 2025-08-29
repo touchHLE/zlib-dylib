@@ -51,6 +51,7 @@ target_compile_options(${LIB_NAME}
         -Wno-deprecated-non-prototype
         -Wno-expansion-to-defined
         -fno-stack-protector
+        -Os
 )
 
 target_compile_definitions(${LIB_NAME} 
