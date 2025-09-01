@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SDK_VERSION: "0.2.2"
+      SDK_VERSION: "0.2.6"
       SDK_REPO: "touchHLE/common-3.0-sdk"
       
     steps:
@@ -26,9 +26,7 @@ jobs:
 
     - name: Download SDK
       run: |
-        curl -L -o sdk.tar.gz "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/common-3.0.sdk-linux-x86_64.tar.gz"
-        tar xzf sdk.tar.gz
-        chmod -R +x common-3.0.sdk/usr/bin/
+        curl -L "https://github.com/${{ env.SDK_REPO }}/releases/download/v${{ env.SDK_VERSION }}/common-3.0.sdk-linux-x86_64.tar.gz" | tar xz
       
     - name: Configure CMake
       run: cmake -DCMAKE_TOOLCHAIN_FILE="common-3.0.sdk/cmake/Toolchain/common-3.0.cmake" -B build
