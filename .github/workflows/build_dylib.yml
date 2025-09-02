@@ -16,10 +16,16 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SDK_VERSION: "0.2.6"
+      SDK_VERSION: "0.3.0"
       SDK_REPO: "touchHLE/common-3.0-sdk"
       
     steps:
+    - name: Install LLVM 20
+      uses: KyleMayes/install-llvm-action@v2
+      with:
+        version: "20"
+        env: true 
+
     - uses: actions/checkout@v5
       with:
         submodules: 'true'
