@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(CMAKE_ARCHITECTURES "armv6;armv7")
-
 project(zlib VERSION 1.2.3 LANGUAGES C)
 
 set(LIB_NAME "libz.1.2.3.dylib")
@@ -42,6 +40,7 @@ set_target_properties(${LIB_NAME} PROPERTIES
     VERSION ${VERSION}
     MACHO_COMPATIBILITY_VERSION ${COMPAT_VERSION}
     INSTALL_NAME_DIR "${INSTALL_PATH}"
+    OSX_ARCHITECTURES "armv6;armv7"
     POSITION_INDEPENDENT_CODE OFF
     C_STANDARD 99
 )
