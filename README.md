@@ -1,8 +1,10 @@
-# Building zlib dylib 
+# Zlib Dylib 
+
+A CMake-based build configuration for creating an zlib dylib.
 
 ## Prerequisites
-Download and extract the common-3.0.sdk:
-- Download the latest sdk from: <https://github.com/touchHLE/common-3.0-sdk/releases/latest>
+
+- Download the latest sdk from here: [common-3.0.sdk](https://github.com/touchHLE/common-3.0-sdk)
 - Extract in project root
 
 ## Build Dylib
